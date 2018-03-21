@@ -8,7 +8,14 @@ var argument = argv._[0];
 if(argument === 'list') {
     console.log('List notes');
 } else if(argument === 'add') {
-    notes.addNote(argv.title, argv.body);
+    var note = notes.addNote(argv.title, argv.body);
+
+    if(note) {
+        console.log('Note created');
+        console.log(`Title : ${note.title} Body : ${note.body}`);
+    } else {
+        console.log('Note title taken');
+    }
 } else if(argument === 'read') {
     notes.readNote(argv.title);
 } else if(argument === 'remove') {
