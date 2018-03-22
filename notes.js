@@ -35,7 +35,11 @@ var readNote = (title) => {
 };
 
 var deleteNote =(title) => {
-    console.log("Deleting note with title ", title);
+    var notes = fetchNotes();
+    var filteredNotes = notes.filter((note) => note.title !== title);
+    saveNotes(filteredNotes);
+
+    return notes.length !== filteredNotes.length;
 };
 
 var listNote = () => {
