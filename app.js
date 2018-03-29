@@ -17,7 +17,13 @@ if(argument === 'list') {   //list notes
         console.log('Note title taken');
     }
 } else if(argument === 'read') {    //read a note
-    notes.readNote(argv.title);
+    var note = notes.getNote(argv.title);
+    if(note){
+        console.log("Note found");
+        console.log(`Title : ${note.title} Body : ${note.body}`);
+    } else {
+        console.log("Note not found");
+    }
 } else if(argument === 'remove') {  //remove a note
     var returnedValue = notes.deleteNote(argv.title);
     var message = returnedValue ? 'Note was removed' : 'No change';

@@ -30,8 +30,12 @@ var addNote = (title, body) => {
     }
 };
 
-var readNote = (title) => {
+var getNote = (title) => {
     console.log("Read note with title ", title);
+    var notes = fetchNotes();
+    var filteredNotes = notes.filter((note) => note.title === title);
+
+    return filteredNotes[0];
 };
 
 var deleteNote =(title) => {
@@ -48,7 +52,7 @@ var listNote = () => {
 
 module.exports = {
     addNote,
-    readNote,
+    getNote,
     deleteNote,
     listNote
 };
